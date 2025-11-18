@@ -1,0 +1,28 @@
+{
+  "name": "advance_node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+  "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+  "start": "node src/server.js",
+  "simulate": "node src/simulation/loadtest.js"
+}
+,
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "node-fetch": "^3.3.2",
+    "pg": "^8.16.3",
+    "pg-pool": "^3.10.1"
+  },
+  "devDependencies": {
+    "jest": "^30.2.0",
+    "nock": "^14.0.10"
+  }
+}
