@@ -93,7 +93,7 @@ setInterval(() => {
     `\n🚀 ${timestamp()} — Firing 20 requests for second ${currentSecond}...\n`
   );
 
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 20; i++) {
     sendRequest(currentSecond);
   }
 
