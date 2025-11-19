@@ -7,6 +7,7 @@ const timestamp = () =>
 let requestId = 0;
 let currentSecond = 0;
 const secondStats = {};
+let reqC = 100;
 
 // Initialize stats bucket
 function initStats(sec) {
@@ -27,7 +28,7 @@ async function sendRequest(sec) {
     const res = await fetch("http://localhost:4000/api/order", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ productId: 1, qty: 1 })
+      body: JSON.stringify({ productId: 2, qty: 1 })
     });
 
     const latency = +(performance.now() - start).toFixed(2);
@@ -93,7 +94,7 @@ setInterval(() => {
     `\n🚀 ${timestamp()} — Firing 20 requests for second ${currentSecond}...\n`
   );
 
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < reqC; i++) {
     sendRequest(currentSecond);
   }
 
@@ -101,4 +102,4 @@ setInterval(() => {
   setTimeout(() => printSummary(currentSecond), 1000);
 }, 1000);
 
-console.log("🔥 Load Test Started — Generating 20 RPS...\n");
+console.log(`Load Test Started — Generating ${reqC} RPS...\n`);

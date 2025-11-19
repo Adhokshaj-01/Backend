@@ -1,8 +1,12 @@
 import app from "./app.js";
+import { warmupDB } from "./db/warmup.js";
 
-const PORT = process.env.PORT || 4000 ;
+const PORT = process.env.PORT || 4000;
 
-app.listen(PORT , ()=>{
-console.log(`SERVER LISTENING ON ${PORT}`);
-    
-})
+(async () => {
+  await warmupDB();
+
+  app.listen(PORT, () =>
+    console.log(`Server running on port ${PORT}`)
+  );
+})();
