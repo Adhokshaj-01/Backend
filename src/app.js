@@ -1,13 +1,19 @@
-import e from "express";
+import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import orderRoutes from "./api/order.routes.js"
+import orderRoutes from "./api/order.routes.js";
+
 dotenv.config();
 
-const app = e();
-app.use(cors());
-app.use(e.json());
+const app = express();
 
-app.use('/api' , orderRoutes);
+app.use(cors());
+app.use(express.json());   // <-- FIXED
+
+app.get("/", (req, res) => {
+  res.status(200).json("Engine Running");
+});
+
+app.use("/api", orderRoutes);
 
 export default app;
